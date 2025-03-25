@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Header-->
+        
+<br>
+<div class="container d-flex justify-content-center">
+    <div class="card text-center shadow-lg" style="width: 400px;">
+        <div class="card-header bg-primary text-white">
+            Order {{ order.id }} - ${{ order.amount_paid }}
+        </div>
+        <div class="card-body text-start">
+            <p><strong>Email:</strong> {{ order.email }}</p>
+            {% if order.date_shipped %}
+                <p><strong>Date Shipped:</strong> {{ order.date_shipped }}</p>
+            {% else %}
+                <p><strong>Date Ordered:</strong> {{ order.date_ordered }}</p>
+            {% endif %}
+            <p><strong>Name:</strong> {{ order.full_name }}</p>
+            <p><strong>Address: </strong>{{ order.shipping_address }}</p>
+            <hr>
+            {% for item in items %}
+                <p>{{ item.product }} - {{ item.quantity }} Qty - ${{ item.price }}</p>
+            {% endfor %}
+            <br>
+            {% if not order.shipped %}
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name ="shipping_status" value="true">
+                <button type ="submit" class ="btn btn-success"> Mark As Shipped</button>
+            </form>
+                {% else %}
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name ="shipping_status" value="false">
+                    <button type ="submit" class ="btn btn-danger"> Mark As Not Shipped</button>
+                </form>
+
+                {% endif %}
+            
+        
+        </div>
+    </div>
+</div>
+<br>
+
+{% endblock %}
