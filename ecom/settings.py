@@ -19,7 +19,7 @@ SECRET_KEY = 'django-insecure-d&qqo*#fg&*)nvuv858g6_qxa7@i4w4r#1dtw+_1ni9nu0)q^-
 DEBUG = True
 
 ALLOWED_HOSTS = ['https://djangoecom.store', 'djangoecom.store', 'django-e-commerce-website-production.up.railway.app', 'https://django-e-commerce-website-production.up.railway.app', 'localhost', '793e-45-120-122-33.ngrok-free.app']
-CSRF_TRUSTED_ORIGINS =['https://djangoecom.store', 'https://django-e-commerce-website-production.up.railway.app', 'https://793e-45-120-122-33.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS =['https://djangoecom.store', 'https://django-e-commerce-website-production.up.railway.app', 'https://793e-45-120-122-33.ngrok-free.app', 'https://your-live-domain.com', 'https://www.paypal.com']
 
 
 # Application definition
@@ -147,3 +147,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 PAYPAL_TEST = True
 
 PAYPAL_RECEIVER_EMAIL = 'business@codeloom.com' # business sandbox account
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')  # Detects HTTPS requests

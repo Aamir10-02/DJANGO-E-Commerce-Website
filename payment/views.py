@@ -304,7 +304,7 @@ def billing_info(request):
        else:
             # Not Logged In
             # Create User
-            create_order = OrderItem(full_name=full_name, email = email, shipping_address = shipping_address, amount_paid = amount_paid, invoice = my_Invoice)
+            create_order = Order(full_name=full_name, email = email, shipping_address = shipping_address, amount_paid = amount_paid, invoice = my_Invoice)
             create_order.save()
 
             # Get the order ID
