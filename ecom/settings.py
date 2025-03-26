@@ -2,14 +2,13 @@
 
 from pathlib import Path
 import os 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # load_dotenv()
 
-DB_PASSWORD_YO = os.environ['DB_PASSWORD_YO']
-
+DB_PASSWORD_YO = os.environ.get('DB_PASSWORD_YO')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -19,8 +18,8 @@ SECRET_KEY = 'django-insecure-d&qqo*#fg&*)nvuv858g6_qxa7@i4w4r#1dtw+_1ni9nu0)q^-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://djangoecom.store', 'djangoecom.store', 'django-e-commerce-website-production.up.railway.app', 'https://django-e-commerce-website-production.up.railway.app']
-CSRF_TRUSTED_ORIGINS =['https://djangoecom.store', 'https://django-e-commerce-website-production.up.railway.app']
+ALLOWED_HOSTS = ['https://djangoecom.store', 'djangoecom.store', 'django-e-commerce-website-production.up.railway.app', 'https://django-e-commerce-website-production.up.railway.app', 'localhost', '793e-45-120-122-33.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS =['https://djangoecom.store', 'https://django-e-commerce-website-production.up.railway.app', 'https://793e-45-120-122-33.ngrok-free.app']
 
 
 # Application definition
@@ -83,7 +82,7 @@ DATABASES = {
         'NAME': 'railway',
         'USER': 'postgres',
         'PASSWORD': DB_PASSWORD_YO,
-        #'PASSWORD': os.environ['DB_PASSWORD_YO'],
+        # 'PASSWORD': os.environ['DB_PASSWORD_YO'],
         'HOST': 'shuttle.proxy.rlwy.net',
         'PORT': '56964',
 
