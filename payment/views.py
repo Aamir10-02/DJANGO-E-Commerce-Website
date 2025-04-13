@@ -16,7 +16,9 @@ import uuid # unique user id for duplicate order
 # Create your views here.
 
 
-
+# def all_orders(request):
+#     orders = Order.objects.all()  
+#     return render(request, 'payment/all_orders.html', {'orders': orders})
 
 
 

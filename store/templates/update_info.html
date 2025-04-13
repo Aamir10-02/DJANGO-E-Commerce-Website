@@ -1,46 +1,38 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <!-- Additional CSS for this specific page -->
+    <link href="{% static 'css/update_info.css' %}" rel="stylesheet" />
+    <!-- Add more CSS files if needed -->
+{% endblock %}
 {% block content %}
+<header class="update-header">
+    <div class="header-content">
+        <h1 class="update-title">Update User Info</h1>
+        <p class="update-subtitle">Update your personal information</p>
+    </div>
+</header>
 
-<!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Update User Info</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Update User Info...</p>
-                </div>
+<main class="form-container">
+    <div class="form-section">
+        <h2 class="section-title">Billing Information</h2>
+        <form method="POST" action="{% url 'update_info' %}">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                {{ form.as_p }}
             </div>
-        </header>
 
-        <div class="container">
-        	<div class="row">
-        		
-        			<div class="col-md-6 offset-md-3">
+            <h2 class="section-title" style="margin-top: 2rem;">Shipping Information</h2>
+            
+            <div class="form-group">
+                {{ shipping_form.as_p }}
+            </div>
 
-        				<br/><br/>
-                        <strong>Billing Information</strong><br><br>
-<form method="POST" action="{% url 'update_info' %}">
-    {% csrf_token %}
-    {{ form.as_p}}
-    <br/><br/>
-<strong> Shipping Information</strong><br><br>
-    {{ shipping_form.as_p}}
-    <br/><br/>
-    <button type="submit" class="btn btn-secondary">Update Info</button>
- 
-</form>
-<br><br>
-
-
-
-<br/><br/>
-<br/><br/>
-<br/><br/>
-<br/><br/>
-<br/><br/>
-
-        			</div>
-        		</center>
-        	</div>
-        </div>
+            <button type="submit" class="update-button">Update Info</button>
+        </form>
+    </div>
+</main>
 
 {% endblock %}

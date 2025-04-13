@@ -59,6 +59,15 @@ class Product (models.Model):
     def __str__(self):
         return self.name
 
+# For multiple Image
+# New model to store multiple images
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='uploads/products/multiple/')
+
+    def __str__(self):
+        return f"{self.product.name} - Image {self.id}"
+
 class Order (models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)

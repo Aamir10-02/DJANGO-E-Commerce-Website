@@ -1,37 +1,48 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block extra_css %}
+    <!-- Additional CSS for this specific page -->
+    <link href="{% static 'css/fail.css' %}" rel="stylesheet" />
+    <!-- Add more CSS files if needed -->
+{% endblock %}
 
 {% block content %}
 
-        <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Payment Failed</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">There was Problem...</p>
-                </div>
-            </div>
-        </header>
-        <br/>
-        <div class="container">
-            <div class="row">
-                
-            <div class="col-md-6 offset-md-3">
-         
-<br/><br/>
-There was a problem processing your Order...
-<br/>&nbsp;<br/><br/>&nbsp;<br/><br/>&nbsp;<br/><br/>&nbsp;<br/><br/>&nbsp;<br/><br/>&nbsp;<br/>
-<br/>&nbsp;<br/><br/>&nbsp;<br/><br/>&nbsp;<br/><br/>&nbsp;<br/><br/>&nbsp;<br/><br/>&nbsp;<br/>
 
+<header class="failure-header">
+    <div class="container">
+        <h1>Payment Failed</h1>
+        <p>There was a problem with your payment</p>
+    </div>
+</header>
 
-
-            </div>
+<div class="failure-container">
+    <div class="failure-content">
+        <div class="error-pulse"></div>
+        <div class="failure-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="#e74c3c">
+                <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/>
+            </svg>
+        </div>
+        
+        <div class="failure-message">
+            <h2>We couldn't process your payment</h2>
+            <p>There was an issue while processing your order. This could be due to insufficient funds, incorrect card details, or a temporary issue with your payment method.</p>
+            <p>No money has been deducted from your account. Please try again or use a different payment method.</p>
+        </div>
+        
+        <div class="failure-actions">
+            <a href="#" class="btn-retry">Try Again</a>
+            <a href="{% url 'home' %}" class="btn-home">Return Home</a>
         </div>
     </div>
+</div>
 
-
-
-
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add any additional JavaScript here if needed
+    });
+</script>
 
 {% endblock %}

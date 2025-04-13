@@ -1,0 +1,155 @@
+/* products.css */
+
+.product-header {
+    background: #f8f9fa;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.header-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.header-subtitle {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.product-section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.product-image-container {
+    height: 200px; /* Fixed height */
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Changed from 'cover' to 'contain' to show full image */
+    transition: transform 0.5s ease;
+    background: #f8f8f8; /* Background for transparent images */
+    padding: 10px; /* Spacing around image */
+}
+
+.product-card:hover .product-img {
+    transform: scale(1.05);
+}
+
+.sale-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #dc3545;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.price-container {
+    margin-bottom: 1rem;
+}
+
+.price, .sale-price {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #4a6bff;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+}
+
+.btn {
+    display: block; 
+    margin: 0 auto; 
+    width: fit-content; 
+    padding: 0.5rem 1.5rem;
+    background: #4a6bff;
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+
+.btn:hover {
+    background: #3a56d4;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    
+    .product-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .header-title {
+        font-size: 1.5rem;
+    }
+    
+}
+
+@media (max-width: 480px) {
+    
+    
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    
+    
+

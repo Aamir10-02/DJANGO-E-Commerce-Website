@@ -1,32 +1,95 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <!-- Additional CSS for this specific page -->
+    <link href="{% static 'css/about.css' %}" rel="stylesheet" />
+    <!-- Add more CSS files if needed -->
+{% endblock %}
+
 {% block content %}
 
-<!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">About Us...</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Welcome To Codemy Ecommerce...</p>
+<section class="about-hero">
+    <div class="hero-content">
+        <h1 class="hero-title">About Our Journey</h1>
+        <div class="hero-divider"></div>
+        <p class="hero-subtitle">Crafting Digital Excellence Since 2020</p>
+    </div>
+</section>
+
+<main class="about-container">
+    <div class="about-content">
+        <!-- Mission Section -->
+        <section class="about-section fade-in">
+            <div class="section-header">
+                <i class="fas fa-bullseye section-icon"></i>
+                <h2 class="section-title">Our Mission</h2>
+            </div>
+            <p class="about-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt 
+                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+            </p>
+        </section>
+
+        <!-- Values Section -->
+        <section class="about-section fade-in delay-1">
+            <div class="section-header">
+                <i class="fas fa-hand-holding-heart section-icon"></i>
+                <h2 class="section-title">Core Values</h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="card-inner">
+                        <h3>Innovation</h3>
+                        <p>Pushing boundaries in ecommerce solutions</p>
+                    </div>
+                </div>
+                <div class="value-card">
+                    <div class="card-inner">
+                        <h3>Integrity</h3>
+                        <p>Ethical business practices always</p>
+                    </div>
+                </div>
+                <div class="value-card">
+                    <div class="card-inner">
+                        <h3>Excellence</h3>
+                        <p>Quality in every transaction</p>
+                    </div>
                 </div>
             </div>
-        </header>
+        </section>
 
-        <div class="container">
-        	<div class="row">
-        		<center>
-        			<div class="col-8">
-        				<br/><br/>
-<p align="justify">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sollicitudin erat ex, eu egestas ipsum malesuada eget. Morbi lobortis felis in nisl cursus, eget dapibus magna elementum. Duis quis erat massa. Proin sed mollis libero, eget venenatis justo. Suspendisse tincidunt est pretium, congue erat sit amet, fringilla nisl. In vitae nunc tristique, aliquam tortor sed, feugiat velit. Donec ut urna mi. Nam ultrices pharetra gravida. Maecenas nulla velit, eleifend eget iaculis vel, iaculis vel orci. Nam sed ex vitae nisi fermentum gravida. Ut aliquet turpis sem, ac consequat lorem iaculis non. Vestibulum nisl quam, efficitur vel ullamcorper id, consequat ac massa. Quisque iaculis sapien arcu, quis lobortis eros aliquet pharetra.
-<br/><br/>
-Sed non condimentum dolor. Vivamus euismod ullamcorper urna, eget malesuada nibh bibendum a. Cras tincidunt, mauris ut faucibus finibus, eros diam dapibus arcu, ut eleifend dui elit ut ligula. Donec in orci eu urna molestie tristique. Etiam efficitur ut orci ut imperdiet. Vestibulum venenatis nunc id congue convallis. Quisque sodales nulla augue, eget feugiat turpis iaculis vitae. Nunc non tellus tincidunt, hendrerit nunc sit amet, convallis tortor. Quisque et tempor diam. Vivamus aliquet id lorem in sodales. Nulla a consectetur ex, eget maximus neque. Suspendisse varius, lectus vel auctor vestibulum, diam lacus consectetur risus, vel gravida arcu enim eget lectus. Duis sodales pretium interdum.
-<br/><br/>
-Etiam gravida non orci eget vestibulum. Donec et tristique massa, at laoreet nisl. Sed lobortis est massa, a blandit nibh tincidunt eu. Nam at tortor egestas, suscipit justo blandit, ultrices nisl. Phasellus imperdiet placerat eros, sed fermentum mi scelerisque id. Duis dignissim leo eu orci sodales mattis. Suspendisse nisl velit, tristique eget ante nec, egestas scelerisque metus. In pellentesque odio purus, vitae scelerisque massa sodales sit amet. Ut ex augue, elementum sed luctus a, facilisis et dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam mauris sapien, malesuada id hendrerit sed, accumsan nec nunc. Fusce consectetur, metus ac suscipit varius, nulla ante scelerisque tellus, ut pretium dui velit at lectus. Suspendisse sem nunc, viverra tempus venenatis sit amet, mattis a nibh. Nulla pretium dictum ipsum, eget placerat urna semper id. 
-</p>
-<br/><br/>
-        			</div>
-        		</center>
-        	</div>
-        </div>
+        <!-- Timeline Section -->
+        <section class="about-section fade-in delay-2">
+            <div class="section-header">
+                <i class="fas fa-history section-icon"></i>
+                <h2 class="section-title">Our Timeline</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-content">
+                        <h3>Founded</h3>
+                        <p>Started our journey in a small office</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022</div>
+                    <div class="timeline-content">
+                        <h3>Expanded</h3>
+                        <p>Reached 1 million customers worldwide</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-content">
+                        <h3>Innovated</h3>
+                        <p>Launched AI-powered shopping features</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
 
 {% endblock %}

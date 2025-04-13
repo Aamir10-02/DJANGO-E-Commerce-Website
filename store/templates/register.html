@@ -1,41 +1,42 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/auth2.css' %}">
+{% endblock %}
+
 {% block content %}
 
-<!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Register</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Register To Your Account...</p>
+<header class="auth-header">
+    <div class="header-content">
+        <h1 class="header-title animate-slide">Create Account</h1>
+        <p class="header-subtitle animate-slide">Join Our Community</p>
+    </div>
+</header>
+
+<main class="auth-container">
+    <div class="auth-form animate-fade">
+        <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                {% for field in form %}
+                <div class="form-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}
+                    <div class="form-help">{{ field.help_text }}</div>
+                    {% endif %}
+                    {% for error in field.errors %}
+                    <div class="form-error">{{ error }}</div>
+                    {% endfor %}
                 </div>
+                {% endfor %}
             </div>
-        </header>
 
-        <div class="container">
-        	<div class="row">
-        		
-        			<div class="col-md-6 offset-md-3">
-
-        				<br/><br/>
-<form method="POST" action="{% url 'register' %}">
-    {% csrf_token %}
-    {{ form.as_p}}
-    <br/><br/>
-    <button type="submit" class="btn btn-secondary">Register</button>
-
- 
-</form>
-
-<br/><br/>
-<br/><br/>
-<br/><br/>
-<br/><br/>
-<br/><br/>
-<br/><br/>
-<br/><br/>
-        			</div>
-        		</center>
-        	</div>
-        </div>
+            <button type="submit" class="auth-button">Register Now</button>
+        </form>
+    </div>
+</main>
 
 {% endblock %}

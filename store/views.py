@@ -52,7 +52,9 @@ def update_info(request):
       return redirect('home')
      return render(request, "update_info.html", {'form':form, 'shipping_form': shipping_form})
     else:
-     messages.success(request, "You Must Be Logged In To Access That Page!!")
+    #  messages.success(request, "You Must Be Logged In To Access That Page!!")
+     messages.warning(request, "You Must Be Logged In To Access That Page!!")
+
      return redirect('home')
 
 def update_password(request):
@@ -78,7 +80,9 @@ def update_password(request):
           form = ChangePasswordForm(current_user)
           return render(request, "update_password.html", {'form': form})
     else:
-        messages.success(request, "You Must Be Logged In To Access That Page!!")
+        # messages.success(request, "You Must Be Logged In To Access That Page!!")
+        messages.warning(request, "You Must Be Logged In To Access That Page!!")
+
         return redirect('home')
     
 

@@ -1,77 +1,144 @@
 {% extends 'base.html' %}
 
 {% block content %}
-        <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-                </div>
-            </div>
-        </header>
-        <!-- Section-->
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    {% for product in products %}
-                    {% if product.is_sale %}
-                       
-                     <div class="col mb-5">
-                        <div class="card h-100">
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+<div class="zero">
+<!-- Hero Section with Search -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Shop in Style</h1>
+        <p class="subtitle">Discover premium products at unbeatable prices</p>
+        
+        <!-- Modified Search Bar (POST Request) -->
+        <form class="search-form" action="{% url 'search' %}" method="POST">
+            {% csrf_token %}  <!-- Required for POST requests -->
+            <input 
+                type="text" 
+                name="searched"  
+                placeholder="Search products..." 
+                aria-label="Search products"
+                class="search-input"
+            >
+            <button type="submit" class="search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+        
+        <a href="#products" class="btn btn-hero">Explore Collection</a>
+    </div>
+</section>
 
-                            <!-- Product image-->
-                            <img class="card-img-top" src="{{ product.image.url }}" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder">{{ product.name }}</h5>
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        &nbsp;&nbsp;Sale!&nbsp;&nbsp;
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                <!-- Product price-->
-                                <strike>
-                                    ${{ product.price }}
-                                    </strike>
-                                    &nbsp;
-                                    <span class="text-danger"> ${{ product.sale_price }}</span>
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'product' product.id %}">View Product</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    {% else %}
-                <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="{{ product.image.url }}" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">{{ product.name }}</h5>
-                                    
-                                    <!-- Product price-->
-                                    ${{ product.price }}
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'product' product.id %}">View Product</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
-                       
-                    {% endfor %}
-                
-                
+<!-- Category Navigation -->
+<section class="categories">
+    <div class="category-scroll">
+        {% for category in categories %}
+        <a href="{% url 'category' category.slug %}" class="category-item">
+            <div class="category-icon">
+                <i class="{{ category.icon_class }}"></i>
             </div>
-        </section>
+            <span>{{ category.name }}</span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Add this in your home.html template -->
+<section class="features-section">
+    <div class="container">
+        <div class="features-grid">
+            <!-- Secure Payment -->
+            <div class="feature-card">
+                <i class="fas fa-lock feature-icon"></i>
+                <h3 class="feature-title">Secure Payment</h3>
+                <p class="feature-text">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+            </div>
+
+            <!-- Worldwide Delivery -->
+            <div class="feature-card">
+                <i class="fas fa-globe feature-icon"></i>
+                <h3 class="feature-title">Worldwide Delivery</h3>
+                <p class="feature-text">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+            </div>
+
+            <!-- 90 Days Return -->
+            <div class="feature-card">
+                <i class="fas fa-undo feature-icon"></i>
+                <h3 class="feature-title">90 Days Return</h3>
+                <p class="feature-text">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+            </div>
+
+            <!-- 24/7 Support -->
+            <div class="feature-card">
+                <i class="fas fa-headset feature-icon"></i>
+                <h3 class="feature-title">24/7 Support</h3>
+                <p class="feature-text">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="product-section">
+    <h2 class="section-title">Featured Products</h2>
+    <div class="product-grid">
+        {% for product in products %}
+        <div class="product-card">
+            {% if product.is_sale %}
+                <span class="sale-badge">Sale</span>
+            {% endif %}
+            <div class="product-image-container">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-img">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">{{ product.name }}</h3>
+                <div class="price-container">
+                    {% if product.is_sale %}
+                        <span class="original-price">${{ product.price }}</span>
+                        <span class="sale-price">${{ product.sale_price }}</span>
+                    {% else %}
+                        <span class="price">${{ product.price }}</span>
+                    {% endif %}
+                </div>
+                <a href="{% url 'product' product.id %}" class="btn">View Product</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Promotional Banner -->
+<section class="promo-banner">
+    <div class="promo-content">
+        <div class="promo-text">
+            <h3>Summer Sale</h3>
+            <h2>Up to 50% Off</h2>
+            <p>Limited time offer on selected items</p>
+            <a href="#" class="btn btn-promo">Shop Now</a>
+        </div>
+       
+    </div>
+</section>
+
+<!-- Newsletter Subscription -->
+<section class="newsletter">
+    <div class="newsletter-content">
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Get updates on new arrivals and special offers</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit" class="btn-subscribe">Subscribe</button>
+        </form>
+    </div>
+</section>
+</div>
 {% endblock %}
+
+
+<!-- <script>
+$(document).ready(function() {
+    $('.add-to-cart').click(function(e) {
+        e.preventDefault();
+        const productId = $(this).data('product-id');
+        console.log('Add to cart:', productId);
+        // Implement your add to cart functionality here
+    });
+});
+</script> -->

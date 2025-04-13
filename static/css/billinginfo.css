@@ -1,0 +1,199 @@
+/* Custom CSS */
+.checkout-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+/* White Header Text */
+.white-header h1,
+.white-header p {
+  color: white !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Optional: adds slight shadow for better readability */
+}
+
+.checkout-header {
+    background: #2c3e50;
+    padding: 40px 0;
+    text-align: center;
+    margin-bottom: 30px;
+    animation: fadeIn 1s ease-in;
+}
+
+.checkout-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+    padding: 25px;
+    animation: slideIn 0.5s ease-out;
+    transition: transform 0.3s ease;
+}
+
+.checkout-card:hover {
+    transform: translateY(-5px);
+}
+
+.checkout-card-header {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #34495e;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.checkout-button {
+    background: #3498db;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.quantity {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+.total-amount {
+    text-align: right;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.paypal-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.checkout-button:hover {
+    background: #2980b9;
+    transform: scale(1.05);
+}
+
+.form-group {
+    max-width: 500px;
+    margin: 0 auto;
+}
+.form-group p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+
+.form-group label {
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .checkout-container {
+        padding: 15px;
+    }
+    
+    .checkout-header {
+        padding: 25px 0;
+    }
+    
+    .checkout-card {
+        padding: 20px;
+    }
+}
+
+
+/* Sandbox Warning Styles */
+.sandbox-warning {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: flex-start;
+    border-radius: 4px;
+  }
+  
+  .warning-icon {
+    color: #ffc107;
+    font-size: 1.5rem;
+    margin-right: 15px;
+  }
+  
+  .warning-content h3 {
+    color: #856404;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .warning-content p {
+    margin: 5px 0;
+    color: #856404;
+    font-size: 0.95rem;
+  }
+  
+  .warning-content p strong {
+    font-weight: 600;
+  }
+  
+  /* PayPal Sandbox Notice */
+  .payment-method-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    color: #003087;
+  }
+  
+  .payment-method-header i {
+    font-size: 2rem;
+  }
+  
+  .payment-method-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .sandbox-note {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 10px;
+    text-align: center;
+    font-style: italic;
+  }

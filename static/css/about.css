@@ -1,0 +1,217 @@
+/* static/css/about.css */
+/* Base Styles */
+.about-hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+    url('/static/images/wave.jpg');
+    background-size: cover;
+    background-position: center;
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    padding: 2rem;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    transform: translateY(30px);
+    opacity: 0;
+    animation: floatUp 1s forwards;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-divider {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    margin: 1.5rem auto;
+    animation: expand 1s 0.5s forwards;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    opacity: 0;
+    animation: fadeIn 1s 1s forwards;
+    color: #f8f9fa;
+}
+
+/* Content Styles */
+.about-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+
+.about-section {
+    margin: 4rem 0;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.section-icon {
+    font-size: 2rem;
+    color: #4ecdc4;
+    margin-right: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #2c3e50;
+    position: relative;
+}
+
+/* Values Grid */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.value-card {
+    background: linear-gradient(135deg, #4ecdc4, #45b7af);
+    border-radius: 10px;
+    padding: 1px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+   
+}
+
+.value-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+        transparent, rgba(255,255,255,0.2), transparent);
+    transform: rotate(45deg);
+    transition: 0.5s;
+}
+
+.value-card:hover::before {
+    animation: shine 1.5s;
+}
+
+.card-inner {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    position: relative;
+    height: 100%;
+}
+
+/* Timeline Styles */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: #4ecdc4;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    width: 50%;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline-date {
+    position: absolute;
+    top: -20px;
+    background: #4ecdc4;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* Animations */
+@keyframes floatUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes expand {
+    from { width: 0 }
+    to { width: 100px }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1 }
+}
+
+@keyframes shine {
+    0% { left: -50% }
+    100% { left: 150% }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s forwards;
+}
+
+.delay-1 { animation-delay: 0.3s }
+.delay-2 { animation-delay: 0.6s }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem }
+    .hero-subtitle { font-size: 1.2rem }
+    
+    .timeline::before { left: 20px }
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        margin-left: 40px;
+    }
+    .timeline-date { left: -65px }
+}

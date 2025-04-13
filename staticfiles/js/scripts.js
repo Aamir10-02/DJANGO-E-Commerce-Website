@@ -5,3 +5,11 @@
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
+
+document.addEventListener('scroll', function() {
+    const header = document.querySelector('.custom-header');
+    if (header) {
+        const scrollPosition = window.scrollY;
+        header.style.backgroundPositionY = scrollPosition * 0.5 + 'px'; // Adjust the 0.5 for the parallax speed
+    }
+});

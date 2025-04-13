@@ -1,0 +1,53 @@
+{% load static %}
+
+{% block extra_css %}
+    <!-- Additional CSS for this specific page -->
+    <link href="{% static 'css/footer.css' %}" rel="stylesheet" />
+    <!-- Add more CSS files if needed -->
+{% endblock %}
+
+<footer>
+    <div class="footer-content">
+        <!-- Contact Information -->
+        <div class="footer-section">
+            <h4>Contact Us</h4>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> 123 Market Street, New York</li>
+                <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                <li><i class="fas fa-envelope"></i> info@yourstore.com</li>
+            </ul>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'search' %}">Search</a></li>
+                <li><a href="{% url 'category_summary' %}">Shop</a></li>
+            </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-section">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="footer-section">
+            <h4>We Accept</h4>
+            <img src="{% static 'images/payments.jpg' %}" alt="Accepted Payment Methods">
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>&copy; 2023 Your E-Commerce Store. All rights reserved.</p>
+    </div>
+</footer>

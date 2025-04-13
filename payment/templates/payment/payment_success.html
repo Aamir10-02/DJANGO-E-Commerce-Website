@@ -1,37 +1,67 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block extra_css %}
+    <!-- Additional CSS for this specific page -->
+    <link href="{% static 'css/success.css' %}" rel="stylesheet" />
+    <!-- Add more CSS files if needed -->
+{% endblock %}
 
 {% block content %}
 
-        <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Payment Success</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Your Order Is Completed...</p>
-                </div>
-            </div>
-        </header>
-        <br/>
-        <div class="container">
-            <div class="row">
-                
-            <div class="col-md-6 offset-md-3">
-         
-<br/><br/>
-This is some stuff
-<br/>&nbsp;<br/><br/>&nbsp;<br/><br/>&nbsp;<br/><br/>&nbsp;<br/><br/>&nbsp;<br/><br/>&nbsp;<br/>
-<br/>&nbsp;<br/><br/>&nbsp;<br/><br/>&nbsp;<br/><br/>&nbsp;<br/><br/>&nbsp;<br/><br/>&nbsp;<br/>
-
-
-
-            </div>
-        </div>
+<header class="success-header">
+    <div class="container">
+        <h1>Payment Successful!</h1>
+        <p>Your Order Is Completed...</p>
     </div>
+</header>
 
+<div class="success-container">
+    <div class="success-content">
+        <div class="success-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="#2ecc71">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+        </div>
+        
+        <div class="success-message">
+            <h2>Thank you for your purchase!</h2>
+            <p>Your payment was successful and your order is being processed. We've sent a confirmation email with all the details.</p>
+            <p>Your items will be shipped within 2-3 business days.</p>
+        </div>
+        
+        <a href="{% url 'home' %}" class="btn-home">
+            Continue Shopping
+        </a>
+    </div>
+</div>
 
-
-
-
+<script>
+    // Simple confetti effect
+    document.addEventListener('DOMContentLoaded', function() {
+        const colors = ['#2ecc71', '#3498db', '#e74c3c', '#f1c40f', '#9b59b6'];
+        const container = document.querySelector('.success-content');
+        
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.top = -10 + 'px';
+            confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+            confetti.style.width = Math.random() * 8 + 5 + 'px';
+            confetti.style.height = Math.random() * 8 + 5 + 'px';
+            
+            container.appendChild(confetti);
+            
+            setTimeout(() => {
+                confetti.style.opacity = 1;
+                confetti.style.top = Math.random() * 100 + '%';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.transition = 'all ' + (Math.random() * 3 + 2) + 's ease-out';
+            }, i * 100);
+        }
+    });
+</script>
 
 {% endblock %}

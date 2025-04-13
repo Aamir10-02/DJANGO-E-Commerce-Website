@@ -1,43 +1,46 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+{% endblock %}
+
 {% block content %}
 
-<!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Update Profile</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Update User Profile...</p>
+<header class="profile-header">
+    <div class="header-content">
+        <h1>Update Profile</h1>
+        <p>Update User Profile</p>
+    </div>
+</header>
+
+<main class="profile-container">
+    <div class="profile-form-wrapper">
+        <form method="POST" action="{% url 'update_user' %}" class="user-form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                {% for field in user_form %}
+                <div class="form-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}
+                    <small class="form-help">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                    <div class="form-error">{{ error }}</div>
+                    {% endfor %}
                 </div>
+                {% endfor %}
             </div>
-        </header>
 
-        <div class="container">
-        	<div class="row">
-        		
-        			<div class="col-md-6 offset-md-3">
+            <button type="submit" class="update-btn">Update Profile</button>
+        </form>
 
-        				<br/><br/>
-<form method="POST" action="{% url 'update_user' %}">
-    {% csrf_token %}
-    {{ user_form.as_p}}
-    <br/><br/>
-    <button type="submit" class="btn btn-secondary">Update Profile</button>
- 
-</form>
-<br><br>
-
-<a href="{% url 'update_password' %}"  class="btn btn-success">Update Password</a>
-
-
-<br/><br/>
-<br/><br/>
-<br/><br/>
-<br/><br/>
-<br/><br/>
-
-        			</div>
-        		</center>
-        	</div>
+        <div class="form-links">
+            <a href="{% url 'update_password' %}" class="password-link">Update Password</a>
         </div>
+    </div>
+</main>
 
 {% endblock %}

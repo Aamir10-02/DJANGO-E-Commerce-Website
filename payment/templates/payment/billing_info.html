@@ -1,108 +1,103 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block extra_css %}
+    <!-- Additional CSS for this specific page -->
+    <link href="{% static 'css/billinginfo.css' %}" rel="stylesheet" />
+    <!-- Add more CSS files if needed -->
+{% endblock %}
 
 {% block content %}
-
-        <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Billing Info</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Enter Your Payment Info...</p>
-                </div>
-            </div>
-        </header>
-        <br/>
-        <div class="container">
-            <div class="row">
-                
-                    <div class="col-md-6 offset-md-3">
-          <div class="card">
-          <div class="card-header">
-            Order Summary
-          </div>
-          <div class="card-body">
-            {% for product in cart_products %}
-                {{ product.name }}: 
-                    {% if product.is_sale %}
-                        ${{ product.sale_price }}
-                    {% else %}
-                        ${{ product.price }}
-                {% endif %}
-
-                <br/>
-                <small>Quantity: 
-                {% for key, value in quantities.items %}
-                    {% if key == product.id|slugify %}
-                        {{ value }}
-                    {% endif %}
-                {% endfor %}</small>
-                <br/><br/>
-
-            {% endfor %}
-            Total:  ${{ totals }}
-            <br/><br/>
-            <a href="{% url 'cart_summary' %}" class="btn btn-sm btn-outline-secondary">Update Items</a>
-          </div>
-        </div>
-<br/><br/>
-<div class="card">
-  <div class="card-header">
-    Shipping Info
-  </div>
-  <div class="card-body">
-    
-    Name: {{ shipping_info.shipping_full_name }}<br/>
-    Email: {{ shipping_info.shipping_email }}<br/>
-    Address 1: {{ shipping_info.shipping_address1 }}<br/>
-    Address 2: {{ shipping_info.shipping_address2 }}<br/>
-    City: {{ shipping_info.shipping_city }}<br/>
-    State: {{ shipping_info.shipping_state }}<br/>
-    Zipcode: {{ shipping_info.shipping_zipcode }}<br/>
-    Country: {{ shipping_info.shipping_country }}<br/>
-    <br/>
-    <a href="{% url 'checkout' %}" class="btn btn-outline-secondary">Update Shipping</a>
-
-  </div>
-</div>
-<br/><br/>
-
-<center>
-    {{ paypal_form.render }}
-</center>
-
-<br/><br/>
-
-
-<div class="card">
-  <div class="card-header">
-    Billing Info
-  </div>
-  <div class="card-body">
-    <form method="POST" action="{% url 'process_order' %}">
-      {% csrf_token %}
-    {{ billing_form.as_p }}
-    
-  </div>
-</div>
-<br/>
-
-
-
-<button type="submit" class="btn btn-secondary">
-  Pay Now
-</button>
-</form>
-<br/><br/>
-
-
-            </div>
-        </div>
+<header class="checkout-header white-header">
+    <div class="checkout-container">
+        <h1>Billing Info</h1>
+        <p>Enter Your Payment Info...</p>
     </div>
+  </header>
 
+<div class="checkout-container">
+  <!-- Sandbox Warning -->
+  <div class="sandbox-warning">
+    <div class="warning-icon">
+      <i class="fas fa-exclamation-triangle"></i>
+    </div>
+    <div class="warning-content">
+      <h3>Important Notice</h3>
+      <p>This is a demonstration website for portfolio purposes only.</p>
+      <p>For testing payment functionality, please use PayPal Sandbox with test credentials.</p>
+      <p><strong>Note:</strong> No real transactions are processed through this website. We are not responsible for any real payment attempts.</p>
+      
+    </div>
+  </div>
 
+  <!-- Order Summary -->
+  <div class="checkout-card">
+      <div class="checkout-card-header">Order Summary</div>
+      {% for product in cart_products %}
+          <div class="order-item">
+              <div>
+                  {{ product.name }}
+                  <div class="quantity">
+                      Quantity: 
+                      {% for key, value in quantities.items %}
+                          {% if key == product.id|slugify %}
+                              {{ value }}
+                          {% endif %}
+                      {% endfor %}
+                  </div>
+              </div>
+              <div>
+                  {% if product.is_sale %}
+                      ${{ product.sale_price }}
+                  {% else %}
+                      ${{ product.price }}
+                  {% endif %}
+              </div>
+          </div>
+      {% endfor %}
+      <div class="total-amount">Total: ${{ totals }}</div>
+      <a href="{% url 'cart_summary' %}" class="checkout-button">Update Items</a>
+  </div>
 
+  <!-- Shipping Info -->
+  <div class="checkout-card">
+      <div class="checkout-card-header">Shipping Info</div>
+      <div class="shipping-details">
+        <p><strong>Name:</strong> {{ shipping_info.shipping_full_name }}</p>
+        <p><strong>Email:</strong> {{ shipping_info.shipping_email }}</p>
+        <p><strong>Address 1:</strong> {{ shipping_info.shipping_address1 }}</p>
+        <p><strong>Address 2:</strong> {{ shipping_info.shipping_address2 }}</p>
+        <p><strong>City:</strong> {{ shipping_info.shipping_city }}</p>
+        <p><strong>State:</strong> {{ shipping_info.shipping_state }}</p>
+        <p><strong>Zipcode:</strong> {{ shipping_info.shipping_zipcode }}</p>
+        <p><strong>Country:</strong> {{ shipping_info.shipping_country }}</p>
+    </div>
+      <a href="{% url 'checkout' %}" class="checkout-button">Update Shipping</a>
+  </div>
 
+  <!-- PayPal Section -->
+  <div class="paypal-section">
+      <div class="payment-method-header">
+        <i class="fab fa-paypal"></i>
+        <h3>PayPal Sandbox (Test Mode)</h3>
+      </div>
+      {{ paypal_form.render }}
+      <p class="sandbox-note">Use sandbox test accounts for demonstration purposes only.</p>
+  </div>
 
+  <!-- Billing Info -->
+  <div class="checkout-card">
+      <div class="checkout-card-header">Billing Info (THIS PAYMENT OPTION IS NOT AVAILABLE)</div>
+      <form method="POST" action="{% url 'process_order' %}">
+          {% csrf_token %}
+          <div class="form-group">
+              {{ billing_form.as_p }}
+          </div>
+          <div class="paypal-section">
+              <button type="submit" class="checkout-button">Pay Now</button>
+          </div>
+      </form>
+  </div>
+</div>
 
 {% endblock %}

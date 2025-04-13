@@ -1,0 +1,158 @@
+/* Compact Product Styles */
+.compact-product-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.compact-product-image {
+  flex: 1;
+  max-width: 300px;
+  padding: 10px;
+}
+
+.compact-product-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.compact-product-info {
+  flex: 1;
+  padding: 10px;
+}
+
+.compact-product-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+.compact-product-description {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.compact-sale-badge {
+  display: inline-block;
+  background-color: #dc3545;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.compact-price-container {
+  margin: 0.75rem 0;
+}
+
+.compact-original-price {
+  text-decoration: line-through;
+  color: #777;
+  margin-right: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.compact-sale-price {
+  color: #dc3545;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.compact-price {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0.75rem 0;
+}
+
+.compact-quantity-selector {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.compact-quantity-selector label {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.compact-quantity-select {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.compact-action-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.compact-button {
+  padding: 0.75rem 1.25rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  flex: 1;
+  text-align: center;
+}
+
+.compact-button.secondary {
+  background-color: #f8f9fa;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.compact-button.secondary:hover {
+  background-color: #e9ecef;
+}
+
+.compact-button.primary {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+
+.compact-button.primary:hover {
+  background-color: #218838;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .compact-product-container {
+    flex-direction: column;
+    max-width: 500px;
+  }
+  
+  .compact-product-image {
+    max-width: 100%;
+  }
+  
+  .compact-action-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .compact-product-container {
+    padding: 15px;
+  }
+  
+  .compact-product-title {
+    font-size: 1.2rem;
+  }
+}
