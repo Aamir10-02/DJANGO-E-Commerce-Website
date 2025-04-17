@@ -8,7 +8,7 @@
 .white-header h1,
 .white-header p {
   color: white !important;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Optional: adds slight shadow for better readability */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
 }
 
 .checkout-header {

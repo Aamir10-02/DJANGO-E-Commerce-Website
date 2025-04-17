@@ -54,9 +54,9 @@
 .product-img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Changed from 'cover' to 'contain' to show full image */
+    object-fit: contain;
     transition: transform 0.5s ease;
-    background: #f8f8f8; /* Background for transparent images */
+    background: #f8f8f8; 
     padding: 10px; /* Spacing around image */
 }
 

@@ -150,7 +150,7 @@
     color: #721c24;
 }
 
-/* Responsive Table with Horizontal Scroll */
+/* Table with Horizontal Scroll */
 @media (max-width: 768px) {
     .order-container {
         padding: 1rem;
@@ -158,7 +158,7 @@
     }
 
     .order-table {
-        min-width: 600px; /* Minimum width before scroll appears */
+        min-width: 600px; 
     }
 
     .order-table th,

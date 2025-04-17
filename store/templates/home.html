@@ -2,15 +2,15 @@
 
 {% block content %}
 <div class="zero">
-<!-- Hero Section with Search -->
+
 <section class="hero">
     <div class="hero-content">
         <h1>Shop in Style</h1>
         <p class="subtitle">Discover premium products at unbeatable prices</p>
         
-        <!-- Modified Search Bar (POST Request) -->
+     
         <form class="search-form" action="{% url 'search' %}" method="POST">
-            {% csrf_token %}  <!-- Required for POST requests -->
+            {% csrf_token %}  
             <input 
                 type="text" 
                 name="searched"  
@@ -41,7 +41,7 @@
     </div>
 </section>
 
-<!-- Add this in your home.html template -->
+
 <section class="features-section">
     <div class="container">
         <div class="features-grid">
