@@ -1,8 +1,10 @@
 /* Shared Order Table Styles */
 .order-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 2rem;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
 .order-header {
@@ -146,4 +148,28 @@
 .shipped-false {
     background-color: #f8d7da;
     color: #721c24;
+}
+
+/* Responsive Table with Horizontal Scroll */
+@media (max-width: 768px) {
+    .order-container {
+        padding: 1rem;
+        overflow-x: auto;
+    }
+
+    .order-table {
+        min-width: 600px; /* Minimum width before scroll appears */
+    }
+
+    .order-table th,
+    .order-table td {
+        padding: 0.75rem;
+        font-size: 0.875rem;
+    }
+
+    .order-btn {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
 }

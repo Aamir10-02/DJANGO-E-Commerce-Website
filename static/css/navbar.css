@@ -25,23 +25,16 @@ Navbar */
 
 .mobile-menu-toggle {
     display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 21px;
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0;
-    z-index: 1000;
+    padding: 10px;
+    z-index: 1001;
 }
-
-.mobile-menu-toggle .bar {
-    display: block;
-    height: 3px;
-    background-color: #333;
-    border-radius: 3px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+.mobile-menu-toggle .fa-bars {
+    font-size: 1.5rem;
+    color: #333;
+    transition: transform 0.3s ease;
 }
 
 /* Navigation Menu */
@@ -55,16 +48,12 @@ Navbar */
     padding: 0;
     margin: 0;
     display: flex;
-    
 }
-
-
 
 .nav-item {
     margin-left: 1.5rem;
     position: relative;
 }
-
 
 .nav-link {
     text-decoration: none;
@@ -93,8 +82,8 @@ Navbar */
     visibility: hidden;
     transform: translateY(10px);
     transition: all 0.3s ease;
-    list-style: none !important;  /* Added */
-    padding-left: 0 !important;   /* Added */
+    list-style: none !important;
+    padding-left: 0 !important;
 }
 .dropdown-menu li {
     list-style: none;
@@ -131,28 +120,30 @@ Navbar */
     align-items: center;
     padding: 0.5rem 1.25rem;
     border-radius: 25px;
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
+    background-color: #007bff;
+    border: 1px solid #007bff;
     text-decoration: none;
     transition: all 0.3s ease;
+    color: white;
 }
 
 .cart-btn:hover {
-    background-color: #e9ecef;
+    background-color: #0056b3;
+    border-color: #0056b3;
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .cart-icon {
-    fill: #555;
+    fill: #f7f5f5;
     margin-right: 0.75rem;
     width: 20px;
     height: 20px;
 }
 
 .cart-badge {
-    background-color: #007bff;
-    color: white;
+    background-color: #ffffff;
+    color: #007bff;
     border-radius: 50%;
     padding: 0.25rem 0.5rem;
     font-size: 0.9rem;
@@ -161,7 +152,12 @@ Navbar */
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: 0.5rem;
 }
+
+/* Mobile Cart Additions */
+.mobile-cart { display: none; }
+.desktop-cart { display: block; }
 
 /* Overlay */
 .nav-overlay {
@@ -182,29 +178,50 @@ Navbar */
     opacity: 1;
 }
 
-
 @media (min-width: 993px) {
-    
     .nav-item.dropdown:hover .dropdown-menu {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
     }
-
-  
     .nav-item {
         margin-left: 2rem;
     }
+    .mobile-cart { display: none !important; }
+    .desktop-cart { display: block; }
 }
+
 /* Mobile Screen Styles (max-width: 992px) */
 @media (max-width: 992px) {
     .navbar .container {
-        align-items: flex-start; 
+        align-items: center;
+        flex-wrap: nowrap;
     }
 
     .mobile-menu-toggle {
-        display: flex; 
-        margin-top: 0.5rem;
+        display: flex;
+        margin-top: 0;
+        order: 3;
+    }
+
+    .logo {
+        order: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 60%;
+        margin-right: auto;
+    }
+
+    .mobile-cart {
+        display: flex;
+        order: 2;
+        margin-left: auto;
+        margin-right: 1rem;
+    }
+
+    .desktop-cart {
+        display: none !important;
     }
 
     .nav-menu {
@@ -257,23 +274,46 @@ Navbar */
         display: block !important;
     }
 
-
     .dropdown.active .dropdown-menu {
-        max-height: 500px; 
+        max-height: 500px;
     }
 
-    .cart-container {
-        margin-left: 0;
-        margin-top: 1.5rem;
-    }
-
-    .nav-overlay.active {
-        display: block;
-    }
     .dropdown-toggle::after {
         content: '\25B8';
         float: right;
         margin-top: 0.2rem;
     }
+
+    .cart-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .cart-icon {
+        margin-right: 0.5rem;
+    }
+
+    .mobile-cart .cart-btn {
+        padding: 0.5rem; /* Reduced padding */
+        font-size: 0; /* Hide text */
+    }
+
+    .mobile-cart .cart-btn .cart-icon {
+        margin-right: 0; /* Remove right margin */
+        font-size: 1rem; /* Reset font size */
+    }
+
+    .mobile-cart .cart-badge {
+        margin-left: 0.25rem; /* Adjust badge spacing */
+        position: relative;
+        top: -1px; /* Fine-tune vertical alignment */
+    }
 }
 
+.mobile-menu-toggle.active .fa-bars {
+    transform: rotate(180deg);
+}
+
+.mobile-menu-toggle.active .fa-bars::before {
+    content: "\f00d";
+}

@@ -18,8 +18,8 @@ SECRET_KEY = 'django-insecure-d&qqo*#fg&*)nvuv858g6_qxa7@i4w4r#1dtw+_1ni9nu0)q^-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://djangoecom.store', 'djangoecom.store', 'django-e-commerce-website-production.up.railway.app', 'https://django-e-commerce-website-production.up.railway.app', 'localhost', '793e-45-120-122-33.ngrok-free.app', '127.0.0.1', 'http://127.0.0.1:8000/']
-CSRF_TRUSTED_ORIGINS =['https://djangoecom.store', 'https://django-e-commerce-website-production.up.railway.app', 'https://793e-45-120-122-33.ngrok-free.app', 'http://127.0.0.1', 'http://localhost']
+ALLOWED_HOSTS = ['https://djangoecom.store', 'djangoecom.store', 'django-e-commerce-website-production.up.railway.app', 'https://django-e-commerce-website-production.up.railway.app', 'localhost', '31ef-82-13-234-95.ngrok-free.app' , '127.0.0.1', 'http://127.0.0.1:8000/']
+CSRF_TRUSTED_ORIGINS =['https://djangoecom.store', 'https://django-e-commerce-website-production.up.railway.app', 'https://31ef-82-13-234-95.ngrok-free.app', 'http://127.0.0.1', 'http://localhost']
 
 
 # Application definition

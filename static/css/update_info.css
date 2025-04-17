@@ -33,6 +33,7 @@
 
 .form-group {
     margin-bottom: 1.5rem;
+    
 }
 
 .form-group label {
@@ -74,5 +75,8 @@
     
     .update-title {
         font-size: 2rem;
+    }
+    .form-group {
+        padding-right: 1.5rem;
     }
 }

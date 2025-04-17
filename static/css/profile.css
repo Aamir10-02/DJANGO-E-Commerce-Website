@@ -4,6 +4,12 @@
     padding: 4rem 0;
     text-align: center;
 }
+.form-group {
+    margin: 0 auto 1.5rem;
+    max-width: 400px;
+    width: 80%;
+    padding-right: 1.5rem;
+}
 
 .header-content {
     max-width: 1200px;
@@ -56,6 +62,7 @@
     font-size: 1rem;
     transition: border-color 0.3s ease;
 }
+
 
 .user-form input:focus,
 .user-form textarea:focus,
@@ -113,6 +120,9 @@
 }
 
 @media (max-width: 640px) {
+    .form-group {
+        padding-right: 1.5rem;
+    }
     .profile-header {
         padding: 2rem 0;
     }

@@ -3,15 +3,16 @@
 
 {% block extra_css %}
     <!-- Additional CSS for this specific page -->
-    <link href="{% static 'css/billinginfo.css' %}" rel="stylesheet" />
+    
+<link rel="stylesheet" href="{% static 'css/order_styles.css' %}">
     <!-- Add more CSS files if needed -->
 {% endblock %}
 
 {% block content %}
 
-<link rel="stylesheet" href="{% static 'css/order_styles.css' %}">
 
 <div class="order-container">
+    <div class="table-wrapper">
     <div class="order-header">
         <h3>Shipped Items</h3>
     </div>
@@ -27,24 +28,25 @@
             </tr>
         </thead>
         <tbody>
-            {% for item in orders %}
-            <tr>
-                <td><a href="{% url 'orders' item.id %}">{{ item.id }}</a></td>
-                <td>${{ item.amount_paid }}</td>
-                <td>{{ item.email }}</td>
-                <td>{{ item.date_shipped }}</td>
-                <td>
-                    <form method="POST">
-                        {% csrf_token %}
-                        <input type="hidden" name="shipping_status" value="false">
-                        <input type="hidden" name="num" value="{{ item.id }}">
-                        <button type="submit" class="order-btn btn-danger">Mark Unshipped</button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
+    {% for item in orders %}
+    <tr>
+        <td data-label="Order"><a href="{% url 'orders' item.id %}">{{ item.id }}</a></td>
+        <td data-label="Price">${{ item.amount_paid }}</td>
+        <td data-label="Customer Email">{{ item.email }}</td>
+        <td data-label="Date Shipped">{{ item.date_shipped }}</td>
+        <td data-label="Status">
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="shipping_status" value="false">
+                <input type="hidden" name="num" value="{{ item.id }}">
+                <button type="submit" class="order-btn btn-danger">Mark Unshipped</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
     </table>
+</div>
 </div>
 
 {% endblock %}
