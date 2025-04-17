@@ -27,113 +27,57 @@ A complete e-commerce solution featuring user authentication, payment processing
 ---
 
 ## 🚀 Deployment  
-[![Deploy on Railway](https://railway.app/button.svg)]
+![Deploy on Railway](https://railway.app/button.svg)
 **Hosted on [Railway](https://railway.app)** with PostgreSQL database
 
 ---
 
-## 🛠️ Installation  
-
-### Prerequisites  
-- Python 3.8+
-- PostgreSQL
-- Virtual Environment
-
-```bash
-# Clone repository
-git clone https://github.com/Aamir10-02/DJANGO-E-Commerce-Website.git
-cd DJANGO-E-Commerce-Website
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate  # Windows
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Configure environment
-cp .env.example .env
-# Update .env with your credentials
-Database Setup
-
-python manage.py migrate
-python manage.py createsuperuser
-Run Locally
-
-python manage.py runserver
-Visit http://localhost:8000
-
-⚙️ Configuration
-Required Environment Variables (.env):
-
-
-SECRET_KEY=your_django_secret
-DEBUG=True
-DB_URL=postgresql://user:password@localhost:5432/dbname
-PAYPAL_CLIENT_ID=your_paypal_id
-PAYPAL_SECRET=your_paypal_secret
-🚂 Railway Deployment
-Create new Railway project
-
-Add PostgreSQL plugin
-
-Set environment variables:
-
-SECRET_KEY
-
-DEBUG (False in production)
-
-DATABASE_URL (auto-set by PostgreSQL plugin)
-
-PAYPAL_CLIENT_ID
-
-PAYPAL_SECRET
-
-Deploy!
-
-🖥️ Usage
+## 🖥️ Usage
 User Registration
 
-Create account → Verify email → Login
+- Create account → Verify email → Login
 
-Shopping Experience
+- Shopping Experience
 
-Browse products → Add to cart → Checkout → Payment
+- Browse products → Add to cart → Checkout → Payment
 
-Profile Management
+- Profile Management
 
-Update personal info → Change password → Manage addresses
+- Update personal info → Change password → Manage addresses
 
-Admin Dashboard
+- Admin Dashboard
 
-/admin → Manage orders, users, products
+- /admin → Manage orders, users, products
 
-🧩 Tech Stack
-Backend: Django, Python
+---
 
-Database: PostgreSQL
+## 🧩 Tech Stack
+- Backend: Django, Python
 
-Frontend: HTML, CSS, JAVASCRIPT
+- Database: PostgreSQL
 
-Payments: PayPal REST API
+- Frontend: HTML, CSS, JAVACRIPT
 
-Hosting: Railway
+- Payments: PayPal REST API
 
-Security: CSRF protection, password hashing
+- Hosting: Railway
 
+- Security: CSRF protection, password hashing
 
+---
 
-📜 License
+## 📜 License
 MIT License - See LICENSE for details
 
-🙏 Acknowledgments
+---
+
+## 🙏 Acknowledgments
 Django Software Foundation
 
 PayPal Developer Network
 
-Bootstrap Community
-
 Railway Deployment Platform
 
-Created with ❤️ by Aamir Saiyad
+---
+
+## Created with ❤️ by Aamir Saiyad
