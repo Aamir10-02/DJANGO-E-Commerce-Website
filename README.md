@@ -4,7 +4,7 @@
 
 A complete e-commerce solution featuring user authentication, payment processing, order management and admin dashboard. Built with Django and PostgreSQL, deployed on Railway.
 
-**Live Demo:** [https://djangoecom.store/](https://djangoecom.store/)
+**Live Demo:** [https://djangoecom.store/](https://django-e-commerce-website-production.up.railway.app/)
 
 ---
 
